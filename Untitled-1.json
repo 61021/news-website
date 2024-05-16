@@ -1,0 +1,21 @@
+[
+  {
+    "id": 1,
+    "conditions": [
+      {
+        "id": 1,
+        "barcode": "1234567890",
+        "compare_at_price": 199750,
+        "cost_per_item": 190000,
+        "country_of_origin": "US",
+        "name": "OPEN_BOX",
+        "price": 239750,
+        "quantity": 0,
+        "sku": "TECH-OG-OB-001",
+        "vendor": "Sony",
+        "weight": 0.5
+      }
+    ],
+    "name": "ORIGINAL"
+  }
+]

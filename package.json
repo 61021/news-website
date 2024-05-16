@@ -1,0 +1,42 @@
+{
+  "type": "module",
+  "private": true,
+  "scripts": {
+    "build": "nuxi build",
+    "dev": "nuxi dev",
+    "generate": "nuxi generate",
+    "prepare": "nuxi prepare",
+    "start": "node .output/server/index.mjs",
+    "start:generate": "npx serve .output/public",
+    "lint": "eslint .",
+    "typecheck": "vue-tsc --noEmit"
+  },
+  "dependencies": {
+    "@vueuse/motion": "^2.1.0",
+    "pocketbase": "^0.21.2"
+  },
+  "devDependencies": {
+    "@antfu/eslint-config": "^2.15.0",
+    "@iconify-json/circle-flags": "^1.1.47",
+    "@iconify-json/ph": "^1.1.12",
+    "@nuxt/eslint": "^0.3.9",
+    "@nuxt/image": "^1.6.0",
+    "@nuxtjs/color-mode": "^3.4.0",
+    "@nuxtjs/google-fonts": "^3.2.0",
+    "@nuxtjs/i18n": "^8.3.1",
+    "@pinia/nuxt": "^0.5.1",
+    "@unocss/eslint-config": "^0.59.4",
+    "@unocss/nuxt": "^0.59.4",
+    "@vueuse/nuxt": "^10.9.0",
+    "eslint": "^9.1.1",
+    "eslint-plugin-format": "^0.1.1",
+    "gsap": "^3.12.5",
+    "nuxt": "^3.11.2",
+    "nuxt-gtag": "^2.0.5",
+    "nuxt-og-image": "3.0.0-rc.52",
+    "nuxt-swiper": "^1.2.2",
+    "pinia": "^2.1.7",
+    "typescript": "^5.4.5",
+    "vue-tsc": "^2.0.14"
+  }
+}

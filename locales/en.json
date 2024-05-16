@@ -1,0 +1,60 @@
+{
+  "header": {
+    "routes": {
+      "home": "Home",
+      "about": "About Us",
+      "contact": "Contact",
+      "store": "Go To Store"
+    }
+  },
+  "sections": {
+    "first": {
+      "heading": "Quality Construction Materials",
+      "sub": "Providing top-notch construction materials and services for all your building needs.",
+      "buttons": {
+        "learnMore": "Learn More",
+        "contactUs": "Contact Us"
+      }
+    },
+    "second": {
+      "heading": "Every Product in One Place",
+      "button": "Go to Marketplace"
+    },
+    "third": {
+      "heading": "Building a Legacy: Our History, Mission, and Values",
+      "sub": "We are a leading provider of high-quality construction materials."
+    },
+    "fourth": {
+      "heading": "Building a Legacy in Construction Materials",
+      "sub": "BK (Bayt Alkrmeed) has a rich history in the construction materials industry, evolving and growing to become a trusted name in the market. With a strong commitment to quality and customer satisfaction, we have successfully completed numerous projects and served a wide range of clients."
+    },
+    "sixth": "Building a Legacy in Construction Materials",
+    "seventh": "Building a Legacy in Construction Materials",
+    "ninth": "Trusted by industry leaders",
+    "eleventh": {
+      "heading": "Contact BK",
+      "sub": "We're here to help. Get in touch with BK (Bayt Alkrmeed) for any inquiries or assistance."
+    },
+    "twelfth": {
+      "email": {
+        "heading": "Email",
+        "sub": "Send us an email"
+      },
+      "phone": {
+        "heading": "Phone",
+        "sub": "Call us today"
+      }
+    }
+  },
+  "store": {
+    "heading": "Everything you need, in one Place</strong>",
+    "search": "Search by name or category"
+  },
+  "footer": {
+    "address": {
+      "heading": "Address:",
+      "sub": "Iraq, Baghdad, Al-Wazeryiah"
+    },
+    "contact": "Contact:"
+  }
+}
