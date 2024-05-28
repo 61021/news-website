@@ -8,7 +8,7 @@ onMounted(() => {
   }, 500)
   setTimeout(() => {
     isLoading.value = false
-  }, 3000)
+  }, 1000)
 })
 </script>
 
@@ -17,17 +17,12 @@ onMounted(() => {
     <div
       v-if="isLoading"
       flex="~ items-center justify-center"
-      bg="banana"
+      bg="primary-background dark:primary-background-dark"
       class="fixed left-0 top-0 z200469046140 hscreen wfull"
     >
-    <Transition name="fade">
-      <VImage
-        v-show="isLogo"
-        src="/images/loader.png"
-        class="spinning h80 w80"
-      />
-    </Transition>
-
+      <Transition name="fade">
+        <Logo class="h20" />
+      </Transition>
     </div>
   </Transition>
 </template>

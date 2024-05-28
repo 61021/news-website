@@ -5,16 +5,14 @@ const { locale } = useI18n()
 <template>
   <main
     class="relative min-h-screen wfull overflow-x-hidden"
-    bg="primary-background dark:primary-background-dark"
+    bg="slate100 dark:stone950"
     :dir="locale === 'en' ? 'ltr' : 'rtl'"
   >
-    <VCursor />
+    <!-- <Loader /> -->
 
-    <Loader />
+    <Header class="relative z2" />
 
-    <Header />
-
-    <VFlexCol class="relative hfull wfull">
+    <VFlexCol class="relative z2 hfull wfull">
       <slot />
     </VFlexCol>
 
@@ -31,7 +29,8 @@ h5,
 h6,
 span,
 p,
-i {
+i,
+li {
   @apply text-primary-text dark:text-primary-text-dark;
 }
 </style>

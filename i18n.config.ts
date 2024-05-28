@@ -1,4 +1,4 @@
-import en from '~/locales/en.json'
+// import en from '~/locales/en.json'
 import ar from '~/locales/ar.json'
 
 export default defineI18nConfig(() => ({
@@ -6,6 +6,6 @@ export default defineI18nConfig(() => ({
   locale: 'ar',
   messages: {
     ar,
-    en,
+    // en,
   },
 }))

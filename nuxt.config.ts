@@ -1,4 +1,6 @@
-import { appDescription } from './constants/index'
+import process from 'node:process'
+import { appDescription, appName, frontUrl } from './composables/rasd'
+import { baseUrl } from './composables/api'
 
 export default defineNuxtConfig({
   modules: [
@@ -8,16 +10,18 @@ export default defineNuxtConfig({
     '@nuxtjs/color-mode',
     '@nuxt/eslint',
     '@nuxtjs/i18n',
-    'nuxt-og-image',
     'nuxt-swiper',
     '@nuxt/image',
     '@nuxtjs/google-fonts',
     '@vueuse/motion/nuxt',
     'nuxt-gtag',
+    '@nuxtjs/seo',
   ],
 
   site: {
-    url: 'https://theideaiq.com',
+    url: frontUrl,
+    name: appName,
+    description: appDescription,
   },
 
   experimental: {
@@ -39,9 +43,11 @@ export default defineNuxtConfig({
 
   i18n: {
     vueI18n: './i18n.config.ts',
-    locales: ['ar', 'en'],
+    locales: ['ar'],
     defaultLocale: 'ar',
     strategy: 'no_prefix',
+    baseUrl: frontUrl,
+    detectBrowserLanguage: false,
   },
 
   googleFonts: {
@@ -87,7 +93,7 @@ export default defineNuxtConfig({
   },
 
   devServer: {
-    port: 9451,
+    port: 4001,
   },
 
   features: {
@@ -97,7 +103,7 @@ export default defineNuxtConfig({
 
   runtimeConfig: {
     public: {
-      baseURL: process.env.BASE_URL || 'https://backend.theideaiq.com/api/',
+      baseURL: process.env.BASE_URL || baseUrl,
     },
   },
 

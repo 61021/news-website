@@ -1,11 +1,5 @@
-export function useMyFetch<T>(request, opts?) {
+export const useMyFetch: typeof useFetch = (request, opts?) => {
   const config = useRuntimeConfig()
 
-  return useFetch<T>(request, {
-    baseURL: config.public.baseURL,
-    headers: {
-      Authorization: `Bearer ${token}`,
-    },
-    ...opts,
-  })
+  return useFetch(request, { baseURL: config.public.baseURL, ...opts })
 }

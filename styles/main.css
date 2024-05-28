@@ -1,3 +1,23 @@
+:root {
+  --on-primary: #fff;
+  --on-primary-dark: #fff;
+
+  --primary: #11297E;
+  --primary-dark: #1F41BB;
+
+  --primary-background: #fff;
+  --primary-background-dark: #111115;
+
+  --primary-text: #111115;
+  --primary-text-dark: #fff;
+
+  --secondary-background: #111115;
+  --secondary-background-dark: #fff;
+
+  --secondary-text: #fff;
+  --secondary-text-dark: #111115;
+}
+
 ::selection { /* Optional */
   /* It can be really hard to read highlighted text with a text-shadow, it should be removed when selected */
   text-shadow: none;
@@ -5,7 +25,7 @@
   /* NOTE: Using this means the color and background-color are set to transparent for selected text... */
   /* So you can customise your styles below */
   color: #fff;
-  background-color: #E6154F;
+  background-color: var(--primary);
 }
 
 html {
@@ -73,12 +93,17 @@ iframe, video {
   width: 100%
 }
 
-* {
-  scrollbar-width: none;
-  -ms-overflow-style: none;
-  cursor: none;
+.swiper-pagination-bullet {
+  color: white !important;
+  background-color: white !important;
 }
 
-a, button {
-  cursor: none;
+.swiper-button-next {
+  color: white !important;
+  left: 1.5rem !important;
+}
+
+.swiper-button-prev {
+  color: white !important;
+  right: 1.5rem !important;
 }

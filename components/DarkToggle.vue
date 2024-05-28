@@ -28,15 +28,15 @@ function toggleDark() {
       <div
         v-if="color.value === 'dark'"
         i-ph-sun-duotone
-        class=" transition-all duration-300 ease-in-out"
-        text="2xl hover:strawberry primary-text dark:primary-text-dark hover:dark:banana"
+        class="transition-all duration-300 ease-in-out"
+        text="2xl white "
       />
 
       <i
         v-else
         i-ph-moon-stars-duotone
-        class=" transition-all duration-300 ease-in-out"
-        text="2xl hover:strawberry primary-text dark:primary-text-dark hover:dark:banana"
+        class="transition-all duration-300 ease-in-out"
+        text="2xl white "
       />
     </Transition>
   </VFlexCol>

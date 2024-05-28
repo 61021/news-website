@@ -4,11 +4,11 @@ const { setLocale, locale } = useI18n()
 const langs = [
   {
     code: 'en',
-    icon: 'i-circle-flags-uk',
+    text: 'English',
   },
   {
     code: 'ar',
-    icon: 'i-circle-flags-iq',
+    text: 'العربية',
   },
 ]
 </script>
@@ -17,9 +17,9 @@ const langs = [
   <button
     v-for="lang in langs.filter(l => l.code !== locale)"
     :key="lang.code"
-    :class="[lang.icon]"
     flex
-    text="xl"
+    text="xl white"
     @click="setLocale(lang.code)"
+    v-text="lang.text"
   />
 </template>

@@ -1,4 +1,6 @@
 <script setup lang="ts">
+import type { Category } from '~/types'
+
 const isNavOpen = ref(false)
 
 const nav = ref<HTMLElement | null>(null)
@@ -15,130 +17,100 @@ onStartTyping(() => {
     searchRef.value.focus()
 })
 
-interface Collection {
-  id: string
-  titleAr: string
-  titleEn: string
-}
-
 const pending = ref(true)
-const collections = ref<Collection[]>([])
 
-async function getCollections() {
+const categories = ref<Category[]>([])
+
+async function getCategories() {
   pending.value = true
-  const records: Collection[] = await pb.collection('collections').getFullList({
+  const records: Category[] = await pb.collection('categories').getFullList({
     sort: '-created',
+    filter: `website="${websiteId}"`,
   })
 
-  collections.value = records
+  categories.value = [{ name: 'الرئيسية', route: 'home' }, ...records]
+
   pending.value = false
 }
 
 const { locale } = useI18n()
 
-getCollections()
+onMounted(() => {
+  getCategories()
+})
 </script>
 
 <template>
   <VFlexCol
-    bg="primary-background dark:primary-background-dark"
+    as="nav"
+    class="z3 wfull"
+    items="center"
   >
     <VFlexRow
-      as="nav"
-      class="z3 wfull"
+      class="z10 hfull wfull"
       items="center"
-      p="xl:x16 x4 y4"
+      as="ul"
+      :gap="12"
+      justify="between"
+      py="6"
+      px="xl:40 6"
+      :class="bgColors[appColor][900]"
     >
+      <Logo
+        class="z22222 h10 sm:h16"
+        fill-color="white"
+      />
+
+      <button
+        ref="button"
+        class="flex! md:hidden!"
+        i-ph-list
+        text="3xl p-t"
+        @click="isNavOpen = !isNavOpen"
+      />
+
       <VFlexRow
-        class="bg-p-b z10 hfull wfull"
-        items="center"
-        as="ul"
         :gap="4"
-        justify="between"
+        items="center"
       >
-        <Logo class="z22222 h10 sm:h14" />
+        <!-- <LanguageSwitcher /> -->
 
         <button
-          ref="button"
-          class="flex! md:hidden!"
-          i-ph-list
-          text="3xl p-t"
-          @click="isNavOpen = !isNavOpen"
+          text="2xl white"
+          class="transition-all duration-300 ease-in-out"
+          i-ph-magnifying-glass-duotone
+          flex
         />
 
-        <VFlexRow
-          :gap="2"
-          class="h10 wfull rounded-full"
-          items="center"
-          p="e4"
-          bg="transparent"
-          border="~ slate400"
-        >
-          <input
-            ref="searchRef"
-            class="hfull wfull rounded-full px4 placeholder:text-slate400 outline-none!"
-            text="primary-text dark:primary-text-dark"
-            bg="transparent"
-            :placeholder="`${$t('header.search')}...`"
-            type="search"
-          >
-
-          <i
-            i-ph-magnifying-glass-duotone
-            text="slate400 xl"
-          />
-        </VFlexRow>
-
-        <VFlexRow
-          :gap="4"
-          items="center"
-        >
-          <LanguageSwitcher />
-
-          <DarkToggle />
-
-          <NuxtLink
-            to="/cart"
-            text="2xl hover:strawberry primary-text dark:primary-text-dark hover:dark:banana"
-            class="transition-all duration-300 ease-in-out"
-            i-ph-user-duotone
-            flex
-          />
-
-          <NuxtLink
-            to="/cart"
-            text="2xl hover:strawberry primary-text dark:primary-text-dark hover:dark:banana"
-            class="transition-all duration-300 ease-in-out"
-            i-ph-shopping-cart-duotone flex
-          />
-        </VFlexRow>
+        <DarkToggle />
       </VFlexRow>
     </VFlexRow>
 
     <VFlexRow
-      as="nav"
-      class="z3 wfull"
-      items="center"
-      p="xl:x16 x4 b4"
+      bg="white"
+      class="wfull shadow"
+      py="6"
+      px="xl:40 6"
+      border="b slate200"
     >
       <VFlexRow
         v-if="!pending"
         class="bg-p-b z10 hfull wfull"
         items="center"
+        :gap="8"
         as="ul"
-        justify="between"
       >
         <NuxtLink
-          v-for="category in collections"
+          v-for="category in categories"
           :key="category.id"
-          class="hfull wfull"
           flex="~ items-center justify-center"
-          :to="`/${category.titleEn.toLowerCase()}`"
+          :to="`/${category.name.toLowerCase()}`"
         >
           <span
-            text="primary-text xl hover:strawberry dark:primary-text-dark dark:hover:banana"
+            text="slate900 xl dark:white"
+            :class="[$route.path.includes(category?.route?.toLowerCase()) ? `${textColors[appColor][700]} font-bold` : '']"
             class="transition-all duration-300 ease-in-out"
-            v-text="locale === 'en' ? category.titleEn : category.titleAr"
+            v-text="category.name"
           />
         </NuxtLink>
       </VFlexRow>

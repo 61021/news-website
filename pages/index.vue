@@ -1,17 +1,9 @@
 <script setup lang="ts">
-defineOgImageComponent('NuxtSeo', {
-  title: 'IDEA',
-  description: 'Iraqi Department of Entertainment Affairs',
-  theme: '#ff0000',
-  colorMode: 'light',
-})
+const router = useRouter()
+
+router.push('/الرئيسية')
 </script>
 
 <template>
-  <VFlexCol
-    class="relative hfull wfull"
-  >
-    <HomeBannerSection />
-    <HomeProductsSection />
-  </VFlexCol>
+  <h1>Home</h1>
 </template>
