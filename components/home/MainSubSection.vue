@@ -46,7 +46,7 @@ const postsExceptFirstFive = computed(() => posts.value.slice(5))
         >
           <NuxtLink
             class="overflow-hidden! rounded-xl!"
-            :to="`/posts/${post.id}`"
+            :to="`/posts/${post.title}`"
           >
             <img
               class="absolute left-0 top-0 hfull wfull object-cover"

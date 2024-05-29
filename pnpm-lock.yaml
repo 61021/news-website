@@ -11,6 +11,9 @@ importers:
       '@vueuse/motion':
         specifier: ^2.1.0
         version: 2.1.0(rollup@4.17.2)(vue@3.4.27(typescript@5.4.5))
+      pocketbase:
+        specifier: ^0.21.2
+        version: 0.21.2
     devDependencies:
       '@antfu/eslint-config':
         specifier: ^2.15.0
@@ -4387,6 +4390,9 @@ packages:
   pluralize@8.0.0:
     resolution: {integrity: sha512-Nc3IT5yHzflTfbjgqWcCPpo7DaKy4FnpB0l/zCAW0Tc7jxAiuqSxHasntB3D7887LSrA93kDJ9IXovxJYxyLCA==}
     engines: {node: '>=4'}
+
+  pocketbase@0.21.2:
+    resolution: {integrity: sha512-XZdgU9dEv3TPjexDRHy5feYrZrJhWqxTki8ClFGpsnC51G3Qkwoa/U7CVG72jYcLDP3p0HiEhRUUevnlryWkHA==}
 
   popmotion@11.0.5:
     resolution: {integrity: sha512-la8gPM1WYeFznb/JqF4GiTkRRPZsfaj2+kCxqQgr2MJylMmIKUwBfWW8Wa5fml/8gmtlD5yI01MP1QCZPWmppA==}
@@ -11521,6 +11527,8 @@ snapshots:
   playwright-core@1.44.0: {}
 
   pluralize@8.0.0: {}
+
+  pocketbase@0.21.2: {}
 
   popmotion@11.0.5:
     dependencies:

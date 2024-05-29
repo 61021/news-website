@@ -15,7 +15,7 @@ defineProps<{
     border="~ slate200 hover:slate400"
     bg="white dark:white/10"
     :class="[type === 'horizontal' ? 'flex-row! h40' : 'flex-col! h120']"
-    :to="`/posts/${post.id}`"
+    :to="`/posts/${post.title}`"
   >
     <img
       class="object-cover"

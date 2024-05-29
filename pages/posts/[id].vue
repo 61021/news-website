@@ -1,9 +1,18 @@
 <script setup lang="ts">
+import PocketBase from 'pocketbase'
+
 import type { PageResponse, Post } from '~/types'
 
-const routeId = ref(useRoute('posts-id').params.id)
+const routeName = ref(useRoute('posts-id').params.id)
 
-const { data: post } = useApi<Post>(`posts/records/${routeId.value}`)
+const { data } = useApi<PageResponse<Post>>('posts/records', {
+  params: {
+    filter: `title="${routeName.value}"`,
+    skipTotal: 1,
+  },
+})
+
+const post = computed(() => data.value?.items[0])
 
 const { pending, data: similarPosts } = useApi<PageResponse<Post>>('posts/records', {
   params: {

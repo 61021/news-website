@@ -10,6 +10,12 @@ defineOgImageComponent('NuxtSeo', {
 
 useHead({
   title: 'الرئيسية',
+  meta: [
+    {
+      name: 'description',
+      content: appDescription,
+    },
+  ],
 })
 </script>
 

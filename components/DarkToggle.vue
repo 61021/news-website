@@ -16,9 +16,9 @@ function toggleDark() {
 
 <template>
   <VFlexCol
-    class="relative cursor-pointer"
     items="center"
     justify="center"
+    class="relative cursor-pointer"
     @click="toggleDark"
   >
     <Transition
@@ -32,7 +32,7 @@ function toggleDark() {
         text="2xl white "
       />
 
-      <i
+      <div
         v-else
         i-ph-moon-stars-fill
         class="transition-all duration-300 ease-in-out"
