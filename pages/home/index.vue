@@ -7,6 +7,10 @@ defineOgImageComponent('NuxtSeo', {
   theme: appColor,
   colorMode: 'light',
 })
+
+useHead({
+  title: 'الرئيسية',
+})
 </script>
 
 <template>

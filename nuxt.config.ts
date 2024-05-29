@@ -26,10 +26,12 @@ export default defineNuxtConfig({
 
   sitemap: {
     sitemaps: {
+      pages: {
+        includeAppSources: true,
+      },
       posts: {
-        sources: [
-          '/api/__sitemap__/urls/posts',
-        ],
+        includeAppSources: true,
+        include: ['/posts/**'],
       },
     },
   },

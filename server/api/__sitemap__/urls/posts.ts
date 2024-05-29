@@ -1,4 +1,5 @@
 import { asSitemapUrl, defineSitemapEventHandler } from '#imports'
+import { asSitemapUrl } from '#build/types/nitro-imports'
 
 export default defineSitemapEventHandler(async () => {
   // fetch data directly in the correct type
