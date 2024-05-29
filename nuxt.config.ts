@@ -24,6 +24,16 @@ export default defineNuxtConfig({
     description: appDescription,
   },
 
+  sitemap: {
+    sitemaps: {
+      posts: {
+        sources: [
+          '/api/__sitemap__/urls/posts',
+        ],
+      },
+    },
+  },
+
   experimental: {
     // when using generate, payload js assets included in sw precache manifest
     // but missing on offline, disabling extraction it until fixed

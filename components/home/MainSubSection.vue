@@ -1,5 +1,4 @@
 <script setup lang="ts">
-import type { ListResult } from 'pocketbase'
 import type { PageResponse, Post } from '~/types'
 
 const { pending, data } = useApi<PageResponse<Post>>('posts/records', {
