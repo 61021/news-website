@@ -3,11 +3,9 @@ import type { PageResponse, Post } from '~/types'
 
 const routeId = ref(useRoute('posts-id').params.id)
 
-const pending = ref(false)
-
 const { data: post } = useApi<Post>(`posts/records/${routeId.value}`)
 
-const { data: similarPosts } = useApi<PageResponse<Post>>('posts/records', {
+const { pending, data: similarPosts } = useApi<PageResponse<Post>>('posts/records', {
   params: {
     filter: `websites ?~ '${websiteId}'`,
     sort: '-created',

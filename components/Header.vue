@@ -133,14 +133,26 @@ function toggleSearch() {
         as="ul"
       >
         <NuxtLink
-          v-for="category in [{ name: 'الرئيسية', id: 'home' }, ...categories]"
-          :key="category.id"
           flex="~ items-center justify-center"
-          :to="`/${category.id}`"
+          to="/home"
         >
           <span
             text="slate900 xl dark:white"
-            :class="[$route.path.includes(category?.route?.toLowerCase()) ? `${textColors[appColor][700]} font-bold` : '']"
+            :class="[$route.path === '/home' ? `${textColors[appColor][800]} font-bold` : '']"
+            class="transition-all duration-300 ease-in-out"
+            v-text="'الرئيسية'"
+          />
+        </NuxtLink>
+
+        <NuxtLink
+          v-for="category in categories"
+          :key="category.id"
+          flex="~ items-center justify-center"
+          :to="`/categories/${category.id}`"
+        >
+          <span
+            text="slate900 xl dark:white"
+            :class="[$route.path.includes(category?.id?.toLowerCase()) ? `${textColors[appColor][700]} font-bold` : '']"
             class="transition-all duration-300 ease-in-out"
             v-text="category.name"
           />

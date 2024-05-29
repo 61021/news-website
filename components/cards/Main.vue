@@ -55,9 +55,9 @@ defineProps<{
       </VFlexRow>
 
       <VFlexRow
-        class="mt-auto"
+        class="mt-auto duration-300 hover:-translate-x-1"
         items="center"
-        :gap="1"
+        gap="1"
       >
         <span
           :class="textColors[appColor][800]"

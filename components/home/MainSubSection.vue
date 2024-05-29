@@ -19,10 +19,10 @@ const postsExceptFirstFive = computed(() => posts.value.slice(5))
 
 <template>
   <VFlexCol
-    v-if="!pending && posts.length > 0"
     :gap="8"
   >
     <VFlexRow
+      v-if="!pending && posts.length > 0"
       class="h200 wfull"
       :gap="8"
     >
@@ -88,5 +88,7 @@ const postsExceptFirstFive = computed(() => posts.value.slice(5))
         />
       </VFlexCol>
     </VFlexRow>
+
+    <VContainedLoader v-else-if="pending" />
   </VFlexCol>
 </template>

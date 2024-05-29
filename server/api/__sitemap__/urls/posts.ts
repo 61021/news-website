@@ -1,4 +1,4 @@
-import { asSitemapUrl, defineSitemapEventHandler } from '#build/types/nitro-imports'
+import { asSitemapUrl, defineSitemapEventHandler } from '#imports'
 import type { PageResponse, Post } from '~/types'
 
 export default defineSitemapEventHandler(async () => {
