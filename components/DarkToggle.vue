@@ -27,14 +27,14 @@ function toggleDark() {
     >
       <div
         v-if="color.value === 'dark'"
-        i-ph-sun-duotone
+        i-ph-sun-fill
         class="transition-all duration-300 ease-in-out"
         text="2xl white "
       />
 
       <i
         v-else
-        i-ph-moon-stars-duotone
+        i-ph-moon-stars-fill
         class="transition-all duration-300 ease-in-out"
         text="2xl white "
       />

@@ -55,14 +55,14 @@ const links = [
 <template>
   <VFlexCol
     as="footer"
-    pt="2xl:16"
-    :gap="16"
-    px="3xl:40 2xl:20"
+    pt="2xl:16 10"
+    gap="xl:16 8"
+    px="2xl:20 6"
     :class="bgColors[appColor][800]"
     mt="xl:24 12"
   >
     <div
-      grid="~ cols-3"
+      grid="~ xl:cols-3 gap8"
     >
       <VFlexCol :gap="8">
         <Logo
@@ -105,7 +105,7 @@ const links = [
       </VFlexCol>
       <VFlexCol
         :gap="6"
-        class="justify-self-end"
+        class="xl:justify-self-end"
       >
         <h4
           text="white 2xl"
@@ -158,7 +158,7 @@ const links = [
       justify="between"
       gap="2"
       class="mt-auto wfull"
-      h="16"
+      py="4"
     >
       <VFlexRow
         gap="1"
@@ -171,7 +171,7 @@ const links = [
 
         <span
           text="sm white"
-          v-text="$t('footer.copyright', { item: currentYear })"
+          v-text="`${$t('footer.copyright', { item: currentYear })} ل${appName}`"
         />
       </VFlexRow>
     </VFlexRow>

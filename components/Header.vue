@@ -1,5 +1,5 @@
 <script setup lang="ts">
-import type { Category } from '~/types'
+import type { Category, PageResponse } from '~/types'
 
 const isNavOpen = ref(false)
 
@@ -10,34 +10,49 @@ onClickOutside((nav, button), () => {
   isNavOpen.value = false
 })
 
+const { pending, data: similarPosts } = useApi<PageResponse<Category>>('categories/records', {
+  params: {
+    filter: `website="${websiteId}"`,
+    sort: '-created',
+    page: 1,
+    perPage: 10,
+    skipTotal: 1,
+  },
+})
+
+const categories = computed(() => similarPosts.value?.items ?? [])
+
 const searchRef = ref<HTMLInputElement | null>(null)
 
-onStartTyping(() => {
-  if (searchRef.value)
-    searchRef.value.focus()
-})
+const isSearch = ref(false)
 
-const pending = ref(true)
+const searchQuery = ref('')
 
-const categories = ref<Category[]>([])
+const router = useRouter()
 
-async function getCategories() {
-  pending.value = true
-  const records: Category[] = await pb.collection('categories').getFullList({
-    sort: '-created',
-    filter: `website="${websiteId}"`,
-  })
-
-  categories.value = [{ name: 'الرئيسية', route: 'home' }, ...records]
-
-  pending.value = false
+function search() {
+  if (searchQuery.value) {
+    router.push({
+      path: '/search',
+      query: {
+        q: searchQuery.value,
+      },
+    })
+  }
 }
 
-const { locale } = useI18n()
-
-onMounted(() => {
-  getCategories()
-})
+function toggleSearch() {
+  if (isSearch.value) {
+    search()
+  }
+  else {
+    isSearch.value = !isSearch.value
+    setTimeout(() => {
+      if (searchRef.value)
+        searchRef.value.focus()
+    }, 0)
+  }
+}
 </script>
 
 <template>
@@ -75,23 +90,40 @@ onMounted(() => {
       >
         <!-- <LanguageSwitcher /> -->
 
-        <button
-          text="2xl white"
-          class="transition-all duration-300 ease-in-out"
-          i-ph-magnifying-glass-duotone
-          flex
-        />
+        <VFlexRow
+          :class="isSearch ? 'bg-white ps4 py2 rounded-full w100 gap4' : `${bgColors[appColor][900]}`"
+          class="overflow-hidden duration-300"
+          items="center"
+          justify="end"
+        >
+          <input
+            v-show="isSearch"
+            ref="searchRef"
+            v-model="searchQuery"
+            type="search"
+            class="wfull bg-transparent outline-none duration-300"
+            @keydown.enter="search"
+          >
+          <button
+            text="2xl"
+            class="duration-300"
+            i-ph-magnifying-glass-fill
+            flex
+            :class="isSearch ? `${textColors[appColor][800]} translate-x-4` : 'text-white'"
+            @click="toggleSearch"
+          />
+        </VFlexRow>
 
         <DarkToggle />
       </VFlexRow>
     </VFlexRow>
 
     <VFlexRow
-      bg="white"
+      bg="white dark:white/10"
       class="wfull shadow"
       py="6"
       px="xl:40 6"
-      border="b slate200"
+      border="b slate200 dark:white/20"
     >
       <VFlexRow
         v-if="!pending"
@@ -101,10 +133,10 @@ onMounted(() => {
         as="ul"
       >
         <NuxtLink
-          v-for="category in categories"
+          v-for="category in [{ name: 'الرئيسية', id: 'home' }, ...categories]"
           :key="category.id"
           flex="~ items-center justify-center"
-          :to="`/${category.name.toLowerCase()}`"
+          :to="`/${category.id}`"
         >
           <span
             text="slate900 xl dark:white"

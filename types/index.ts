@@ -29,3 +29,11 @@ interface Default {
   collectionId: string
   collectionName: string
 }
+
+export interface PageResponse<T> {
+  page: number
+  perPage: number
+  totalItems: number
+  totalPages: number
+  items: T[]
+}
