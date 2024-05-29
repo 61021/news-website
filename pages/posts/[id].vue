@@ -15,6 +15,7 @@ const { data } = useApi<PageResponse<Post>>('posts/records', {
 const post = computed(() => data.value?.items[0])
 
 const { pending, data: similarPosts } = useApi<PageResponse<Post>>('posts/records', {
+  server: false,
   params: {
     filter: `websites ?~ '${websiteId}'`,
     sort: '-created',
