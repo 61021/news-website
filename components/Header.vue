@@ -1,15 +1,6 @@
 <script setup lang="ts">
 import type { Category, PageResponse } from '~/types'
 
-const isNavOpen = ref(false)
-
-const nav = ref<HTMLElement | null>(null)
-const button = ref<HTMLElement | null>(null)
-
-onClickOutside((nav, button), () => {
-  isNavOpen.value = false
-})
-
 const { pending, data: similarPosts } = useApi<PageResponse<Category>>('categories/records', {
   params: {
     filter: `website="${websiteId}"`,
@@ -76,14 +67,6 @@ function toggleSearch() {
         fill-color="white"
       />
 
-      <button
-        ref="button"
-        class="flex! md:hidden!"
-        i-ph-list
-        text="3xl p-t"
-        @click="isNavOpen = !isNavOpen"
-      />
-
       <VFlexRow
         :gap="4"
         items="center"
@@ -91,7 +74,7 @@ function toggleSearch() {
         <!-- <LanguageSwitcher /> -->
 
         <VFlexRow
-          :class="isSearch ? 'bg-white ps4 py2 rounded-full w100 gap4' : `${bgColors[appColor][900]}`"
+          :class="isSearch ? 'bg-white ps4 py2 rounded-full lg:w100 gap4' : `${bgColors[appColor][900]}`"
           class="overflow-hidden duration-300"
           items="center"
           justify="end"
@@ -120,7 +103,7 @@ function toggleSearch() {
 
     <VFlexRow
       bg="white dark:white/10"
-      class="wfull shadow"
+      class="wfull overflow-x-auto shadow"
       py="6"
       px="xl:40 6"
       border="b slate200 dark:white/20"
@@ -157,44 +140,33 @@ function toggleSearch() {
             v-text="category.name"
           />
         </NuxtLink>
+        <NuxtLink
+          v-for="category in categories"
+          :key="category.id"
+          flex="~ items-center justify-center"
+          :to="`/categories/${category.id}`"
+        >
+          <span
+            text="slate900 xl dark:white"
+            :class="[$route.path.includes(category?.id?.toLowerCase()) ? `${textColors[appColor][700]} font-bold` : '']"
+            class="transition-all duration-300 ease-in-out"
+            v-text="category.name"
+          />
+        </NuxtLink>
+        <NuxtLink
+          v-for="category in categories"
+          :key="category.id"
+          flex="~ items-center justify-center"
+          :to="`/categories/${category.id}`"
+        >
+          <span
+            text="slate900 xl dark:white"
+            :class="[$route.path.includes(category?.id?.toLowerCase()) ? `${textColors[appColor][700]} font-bold` : '']"
+            class="transition-all duration-300 ease-in-out"
+            v-text="category.name"
+          />
+        </NuxtLink>
       </VFlexRow>
     </VFlexRow>
   </VFlexCol>
-
-  <!-- <Transition name="slide-top">
-    <VFlexCol
-      v-if="isNavOpen"
-      ref="nav"
-      as="ul"
-      bg="p-b"
-      items="center"
-      class="fixed left-0 top-18 z2 wfull md:hidden!"
-      py="6"
-      gap="4"
-    >
-      <li
-        v-for="(route, i) in routes"
-        :key="i"
-      >
-        <NuxtLink :to="route.path">
-          <span
-            text="xl"
-            v-text="route.name"
-          />
-        </NuxtLink>
-      </li>
-    </VFlexCol>
-  </Transition> -->
 </template>
-
-<style scoped>
-.slide-top-enter-active,
-.slide-top-leave-active {
-  transition: transform 0.3s;
-}
-
-.slide-top-enter-from,
-.slide-top-leave-to {
-  transform: translateY(-100%);
-}
-</style>

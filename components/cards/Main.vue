@@ -30,7 +30,7 @@ defineProps<{
     >
       <h3
         text="xl"
-        class="line-clamp-2"
+        class="line-clamp-2 font-bold"
         v-text="post.title"
       />
 

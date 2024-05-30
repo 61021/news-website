@@ -35,7 +35,7 @@ const styleClasses: Record<string, StyleClassesType> = {
     :class="styleClasses[variant ?? 'solid'][bgColor ?? 'primary']"
   >
     <span
-      text="inherit"
+      text="inherit sm:base sm"
       class="font-bold"
       v-text="text"
     />

@@ -22,7 +22,7 @@ useHead({
 <template>
   <VFlexCol
     class="relative hfull wfull"
-    mt="xl:16"
+    mt="xl:16 8"
     px="xl:40 6"
   >
     <HomeMainSubSection />

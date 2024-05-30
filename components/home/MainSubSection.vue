@@ -23,13 +23,13 @@ const postsExceptFirstFive = computed(() => posts.value.slice(5))
   >
     <VFlexRow
       v-if="!pending && posts.length > 0"
-      class="h200 wfull"
+      class="h200 wfull flex-col! lg:flex-row!"
       :gap="8"
     >
       <Swiper
         :modules="[SwiperAutoplay, SwiperEffectCreative, SwiperPagination, SwiperNavigation]"
         bg="white"
-        class="relative hfull w70% shadow overflow-hidden! rounded-xl!"
+        class="relative hfull shadow lg:w70% wfull overflow-hidden! rounded-xl!"
         :slides-per-view="1"
         :loop="true"
         pagination
@@ -70,7 +70,7 @@ const postsExceptFirstFive = computed(() => posts.value.slice(5))
 
       <VFlexCol
         :gap="4"
-        class="hfull w30% overflow-y-auto rounded-xl shadow"
+        class="hfull overflow-y-auto rounded-xl shadow lg:w30%"
         bg="white dark:white/10"
         p="6"
       >

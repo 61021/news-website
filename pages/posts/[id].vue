@@ -1,6 +1,4 @@
 <script setup lang="ts">
-import PocketBase from 'pocketbase'
-
 import type { PageResponse, Post } from '~/types'
 
 const routeName = ref(useRoute('posts-id').params.id)
@@ -169,7 +167,7 @@ useHead({
 
 .format p,
 .format li {
-  @apply leading-relaxed! text-xl!;
+  @apply leading-relaxed! lg:text-xl! text-lg;
 }
 
 .format img {
