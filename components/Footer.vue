@@ -1,5 +1,5 @@
 <script setup lang="ts">
-import { appDescription } from '~/composables/rasd'
+import { appDescription } from '~/composables/rasdiq'
 
 const { t } = useI18n()
 

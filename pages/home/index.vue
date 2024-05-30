@@ -1,5 +1,5 @@
 <script setup lang="ts">
-import { appColor, appDescription, appName } from '~/composables/rasd'
+import { appColor, appDescription, appName } from '~/composables/rasdiq'
 
 defineOgImageComponent('NuxtSeo', {
   title: appName,

@@ -1,5 +1,5 @@
 import process from 'node:process'
-import { appDescription, appName, frontUrl } from './composables/rasd'
+import { appDescription, appName, frontUrl } from './composables/rasdiq'
 import { baseUrl } from './composables/api'
 
 export default defineNuxtConfig({
