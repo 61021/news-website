@@ -10,6 +10,8 @@ export const appColor: Color = 'blue'
 
 export const frontUrl = 'https://rasdiq.com'
 
+export const layout: 1 | 2 | 3 | 4 | 5 = 1
+
 export const websiteId = 'c0z4f9noqznsks6'
 
 export const bgColors: Record<Color, {
@@ -447,7 +449,6 @@ export const fillColors: Record<Color, {
     950: 'fill-rose-950! dark:fill-rose-950!',
   },
 }
-
 
 export const textColors: Record<Color, {
   100: string

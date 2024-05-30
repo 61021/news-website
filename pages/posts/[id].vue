@@ -95,7 +95,7 @@ useHead({
     <VFlexCol :gap="4">
       <div
         class="format"
-        v-html="post.content"
+        v-html="post.content.replace('http://31.220.80.211:2004', baseUrl)"
       />
     </VFlexCol>
 
